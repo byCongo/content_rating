@@ -9,18 +9,21 @@ class ContentRating extends React.Component {
     this.state = {
       likes: 0,
       dislikes: 0,
+      totalRatings: 0,
 
       // Event handler for the like button
       handleLike: () => {
         this.setState((prevState) => ({
-          likes: prevState.likes + 1
+          likes: prevState.likes + 1,
+          totalRatings: prevState.likes + 1 + prevState.dislikes
         }));
       },
 
       // Event handler for the dislike button
       handleDislike: () => {
         this.setState((prevState) => ({
-          dislikes: prevState.dislikes + 1
+          dislikes: prevState.dislikes + 1,
+          totalRatings: prevState.likes + 1 + prevState.dislikes
         }));
       }
     };
@@ -41,6 +44,7 @@ class ContentRating extends React.Component {
               Dislike ({this.state.dislikes})
             </button>
           </div>
+          <p>Total Ratings: {this.state.totalRatings} </p>
       </div> 
     );
   };
